@@ -14,3 +14,7 @@ from tensorflow.python.keras.applications import ResNet50
 my_model = ResNet50(weights='../input/resnet50/resnet50_weights_tf_dim_ordering_tf_kernels.h5')
 test_data = read_and_prep_images(img_paths)
 preds = my_model.predict(test_data) 
+from learntools.deep_learning.decode_predictions import decode_predictions
+from IPython.display import Image, display
+
+most_likely_labels = decode_predictions(preds, top=3, class_list_path='../input/resnet50/imagenet_class_index.json')
